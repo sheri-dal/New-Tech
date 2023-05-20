@@ -36,18 +36,14 @@ class _DashboardViewState extends State<DashboardView> {
                   decoration: BoxDecoration(color: Colors.lightBlue.shade100),
                   child: Column(
                     children: [
-                      SizedBox(height: 30),
-                      PrimaryText(
-                        text: "Ilma University",
-                        size: 30,
-                        color: Colors.blue,
-                      ),
+                      // SizedBox(height: 10),
+                      Image.asset(AppImages.Logo, height: 130),
                       PrimaryText(
                         text: "Home Screen",
-                        size: 25,
+                        size: 20,
                         color: Colors.blue,
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 5),
                       PrimaryText(
                         text: "Welcome to your medical app",
                         size: 15,

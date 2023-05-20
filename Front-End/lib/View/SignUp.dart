@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 
 import '../Controller/UserController.dart';
 import '../Helper/Components/Animation.dart';
+import '../Helper/Components/ImagesPath.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -53,7 +54,7 @@ class SignUpView extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              FlutterLogo(size: 80),
+              Image.asset(AppImages.Logo, height: 200),
               MyTextField(
                 controller: userNameController,
                 labelText: "UserName",

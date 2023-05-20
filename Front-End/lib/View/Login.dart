@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Helper/Components/Animation.dart';
+import '../Helper/Components/ImagesPath.dart';
 import 'SignUp.dart';
 
 class LogInView extends StatelessWidget {
@@ -49,7 +50,8 @@ class LogInView extends StatelessWidget {
               SizedBox(
                 height: 100,
               ),
-              FlutterLogo(size: 80),
+              // FlutterLogo(size: 80),
+              Image.asset(AppImages.Logo, height: 200),
               MyTextField(
                 controller: userNameController,
                 labelText: "UserName",

@@ -7,4 +7,5 @@ class AppImages {
   static const DrAsharkalam = "assets/DrImages/Asharkalam.jpg";
   static const DrAshar = "assets/DrImages/Ashar.jpeg";
   static const DrObaid = "assets/DrImages/Obaid.jpg";
+  static const Logo = "assets/DrImages/SkinLogo.png";
 }

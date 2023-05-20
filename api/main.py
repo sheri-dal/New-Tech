@@ -5,6 +5,8 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import tensorflow as tf
+from resizeimage import resizeimage
+import matplotlib.pyplot as plt
 
 app = FastAPI()
 
@@ -29,16 +31,16 @@ async def ping():
     return "Hello, I am alive"
 
 def read_file_as_image(data) -> np.ndarray:
-    image = np.array(Image.open(BytesIO(data)))
-    # image = np.resize(256, 256)
-    return image
+   return  np.array(Image.open(BytesIO(data)))
+ 
+     
 
 
 @app.post("/predict")
 async def predict(
     file: UploadFile = File(...)
 ):
-    MODEL =  tf.keras.models.load_model("../Train_Model/1")
+    MODEL =  tf.keras.models.load_model("../Train_Model/2")
     image = read_file_as_image(await file.read())
     
     img_batch = np.expand_dims(image, 0)

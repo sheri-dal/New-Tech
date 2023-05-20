@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cancerrapp/Helper/Widgets/Loader.dart';
 import 'package:flutter/material.dart';
 
+import '../Helper/Components/ImagesPath.dart';
 import 'Login.dart';
 
 class SplashView extends StatefulWidget {
@@ -48,11 +49,16 @@ class _SplashViewState extends State<SplashView> {
             ],
           ),
         ),
-        child: Loader(
-          loadingText: "Cancer App",
-          backgroundColor: Colors.lightBlue,
-          txtColor: Colors.white,
-          txtsize: 25,
+        child: Column(
+          children: [
+            Image.asset(AppImages.Logo, height: 200),
+            Loader(
+              loadingText: "Cancer App",
+              backgroundColor: Colors.lightBlue,
+              txtColor: Colors.white,
+              txtsize: 25,
+            ),
+          ],
         ),
       ),
     );

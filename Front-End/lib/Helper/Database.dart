@@ -75,7 +75,7 @@ class DatabaseHelper {
     db.insert(
         Table.doctors,
         DoctorModel(
-                name: "Muhammad Ashar Khan",
+                name: "Dr Muhammad Ashar Khan",
                 mobileNumber: "92-335-2774491",
                 hospitalName: "Agha Khan",
                 doctorDay: "Mon-Tue-Sat",
@@ -87,7 +87,7 @@ class DatabaseHelper {
     db.insert(
         Table.doctors,
         DoctorModel(
-                name: "Syed Ashar Kalam",
+                name: "Dr Syed Ashar Kalam",
                 mobileNumber: "92-306-2207478",
                 hospitalName: "Agha Khan",
                 doctorDay: "Mon-Tue-Fri",
@@ -99,7 +99,7 @@ class DatabaseHelper {
     db.insert(
         Table.doctors,
         DoctorModel(
-                name: "M.Anus Farrukh",
+                name: "Dr M.Anus Farrukh",
                 mobileNumber: "92-332-2055374",
                 hospitalName: "Agha Khan",
                 doctorDay: "Wed-Fri-Sat",
@@ -111,7 +111,7 @@ class DatabaseHelper {
     db.insert(
         Table.doctors,
         DoctorModel(
-                name: "Obaid Ur-Rehman",
+                name: "Dr Obaid Ur-Rehman",
                 mobileNumber: "92-304-2518363",
                 hospitalName: "Agha Khan",
                 doctorDay: "Mon-Tue-Sat",
