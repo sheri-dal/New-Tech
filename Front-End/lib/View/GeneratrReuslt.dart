@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:cancerrapp/Controller/ReportController.dart';
 import 'package:cancerrapp/Helper/Components/PrimaryText.dart';
 import 'package:cancerrapp/Helper/Widgets/MyButton.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class GeneratrReuslt extends StatefulWidget {
@@ -13,9 +15,12 @@ class GeneratrReuslt extends StatefulWidget {
 }
 
 class _GeneratrReusltState extends State<GeneratrReuslt> {
+  ReporoController reporoController = Get.put(ReporoController());
   File? imageFile;
   Future<void> getImage({required ImageSource source}) async {
-    final file = await ImagePicker().pickImage(source: source);
+    final file = await ImagePicker().pickImage(
+      source: source,
+    );
 
     if (file?.path != null) {
       setState(() {
@@ -81,10 +86,27 @@ class _GeneratrReusltState extends State<GeneratrReuslt> {
                         Icons.camera_alt,
                         size: MediaQuery.of(context).size.width * .7,
                       )
-                    : Container(
-                        // width: MediaQuery.of(context).size.width * .7,
-                        height: 150,
-                        child: Image.file(imageFile!),
+                    : Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width * .5,
+                            height: 150,
+                            child: Image.file(imageFile!),
+                          ),
+                          SizedBox(height: 20),
+                          MyButton(
+                            bthWidth: 150,
+                            buttonName: "Generate Result",
+                            onPressed: () async {
+                              await reporoController.Upload(
+                                  imageFile!, context);
+                            },
+                            btnborder: BorderRadius.zero,
+                            btnColor: Colors.transparent,
+                            btntrxtcolor: Colors.black,
+                            btnBordercolor: Colors.lightBlue.shade100,
+                          ),
+                        ],
                       )
               ],
             ),

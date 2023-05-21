@@ -35,7 +35,7 @@ class ReportModel extends BaseModel<int> {
     return {
       'id': id,
       'userId': userId,
-      'reportDateTime': reportDateTime?.millisecondsSinceEpoch,
+      'reportDateTime': reportDateTime?.toIso8601String(),
       'cancerStage': cancerStage,
       'imagePath': imagePath,
     };

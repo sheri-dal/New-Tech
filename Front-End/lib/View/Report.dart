@@ -27,29 +27,42 @@ class ReportView extends StatelessWidget {
             itemBuilder: (context, index) {
               return Card(
                 child: ListTile(
+                  // title:
+                  trailing: Column(children: [
+                    PrimaryText(
+                        text: "Report Date",
+                        size: 17,
+                        fontWeight: FontWeight.bold),
+                    PrimaryText(
+                      text: DateFormat.yMMMMd().format(
+                          snapshot.data?[index].reportDateTime ??
+                              DateTime.now()),
+                      size: 15,
+                    ),
+                  ]),
+                  titleAlignment: ListTileTitleAlignment.threeLine,
                   title: PrimaryText(
-                      text: "Report Date",
-                      size: 17,
-                      fontWeight: FontWeight.bold),
+                      text: "Cancer Stage", textAllign: TextAlign.left),
                   subtitle: PrimaryText(
-                    text: DateFormat.yMMMMd().format(
-                        snapshot.data?[index].reportDateTime ?? DateTime.now()),
-                    size: 15,
-                  ),
-                  leading: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      PrimaryText(
-                          text: "Cancer Stage",
-                          size: 17,
-                          fontWeight: FontWeight.bold),
-                      PrimaryText(
-                          text:
-                              "${snapshot.data?[index].cancerStage?.toUpperCase()}",
-                          size: 15),
-                    ],
-                  ),
+                      textAllign: TextAlign.left,
+                      text:
+                          "${snapshot.data?[index].cancerStage?.toUpperCase()}",
+                      size: 15),
+                  // minLeadingWidth: MediaQuery.of(context).size.width * .3,
+                  // leading: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.start,
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     PrimaryText(
+                  //         text: "Cancer Stage",
+                  //         size: 17,
+                  //         fontWeight: FontWeight.bold),
+                  //     PrimaryText(
+                  //         text:
+                  //             "${snapshot.data?[index].cancerStage?.toUpperCase()}",
+                  //         size: 15),
+                  //   ],
+                  // ),
                   // trailing: PrimaryText(text: "text"),
                 ),
               );

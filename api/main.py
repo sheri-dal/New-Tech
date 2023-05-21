@@ -12,6 +12,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
+    "http://127.0.0.1:64109",
     "http://localhost:3000",
 ]
 app.add_middleware(
@@ -23,15 +24,20 @@ app.add_middleware(
 )
 
 
-
+MODEL =  tf.keras.models.load_model("../Train_Model/2")
 CLASS_NAMES = ["nevus", "not found"]
 
 @app.get("/ping")
 async def ping():
     return "Hello, I am alive"
 
+
 def read_file_as_image(data) -> np.ndarray:
-   return  np.array(Image.open(BytesIO(data)))
+   return np.array(
+        Image.open(BytesIO(data)).resize((256, 256)) # image resizing
+    )
+ 
+
  
      
 
@@ -45,8 +51,6 @@ async def predict(
     
     img_batch = np.expand_dims(image, 0)
 
-    
-    
     predictions = MODEL.predict(img_batch)
 
     predicted_class = CLASS_NAMES[np.argmax(predictions[0])]
@@ -56,5 +60,9 @@ async def predict(
         'confidence': float(confidence )
     }
 
+    
+
+    
+
 if __name__ == "__main__":
-    uvicorn.run(app, host='localhost', port=8000)
+    uvicorn.run(app, host='192.168.0.101', port=8080)
