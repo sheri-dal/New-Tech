@@ -1,19 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'Helper/Services/NotificationService.dart';
 import 'View/Splash.dart';
 // import 'package:sqflite/sqflite.dart';
 
-void main() {
-  if (Platform.isWindows || Platform.isLinux) {
-    // Initialize FFI
-    // sqfliteFfiInit();
-  }
-  // Change the default factory. On iOS/Android, if not using `sqlite_flutter_lib` you can forget
-  // this step, it will use the sqlite version available on the system.
-  // databaseFactory = databaseFactoryFfi;
+Future<void> main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
+
+  NotificationService ns = NotificationService();
+  ns.initiliazeNotification();
+  ns.sendNotification("hello", "Hello Wordl");
   runApp(const MyApp());
 }
 

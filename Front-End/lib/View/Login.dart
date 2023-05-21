@@ -71,7 +71,7 @@ class LogInView extends StatelessWidget {
               ),
               MyButton(
                 buttonName: "SignIn",
-                onPressed: () async {
+                onPressed: () {
                   // await Helper.deleteDatabase();
                   userController.Login(userNameController.text,
                       PasswordController.text, context);
