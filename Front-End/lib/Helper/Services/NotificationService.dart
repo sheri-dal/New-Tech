@@ -34,6 +34,11 @@ class NotificationService {
     NotificationDetails notificationDetails =
         NotificationDetails(android: androidNotificationDetails);
     _flutterLocalNotificationsPlugin.periodicallyShow(
-        0, title, body, RepeatInterval.everyMinute, notificationDetails);
+      0,
+      title,
+      body,
+      RepeatInterval.everyMinute,
+      notificationDetails,
+    );
   }
 }
