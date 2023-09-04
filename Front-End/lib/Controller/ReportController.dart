@@ -104,7 +104,7 @@ class ReporoController extends BaseController {
         var pref = await SharedPreferences.getInstance();
         var userId = pref.getInt(Prefkey.userId);
 
-        if (classs == "not found") {
+        if (classs == "Skin") {
           var reposrt = ReportModel(
             reportDateTime: DateTime.now(),
             userId: userId,
@@ -115,7 +115,7 @@ class ReporoController extends BaseController {
             NotFound(context, confidence),
             barrierDismissible: false,
           );
-        } else {
+        } else if (classs == "Nevus Stage 1") {
           var reposrt = ReportModel(
             reportDateTime: DateTime.now(),
             userId: userId,
@@ -123,24 +123,39 @@ class ReporoController extends BaseController {
           );
           await ReportsRepositort.dao.insert(reposrt);
           Get.dialog(
-            Found(context, confidence),
+            Found(context, confidence, classs),
             barrierDismissible: false,
           );
+        } else if (classs == "Nevus Stage 2") {
+          var reposrt = ReportModel(
+            reportDateTime: DateTime.now(),
+            userId: userId,
+            cancerStage: "Nevus Found with $confidence%",
+          );
+          await ReportsRepositort.dao.insert(reposrt);
+          Get.dialog(
+            Found(context, confidence, classs),
+            barrierDismissible: false,
+          );
+        } else if (classs == "Nevus Stage 3") {
+          DialogHelper.showErroDialog(description: "Skin not found");
+        } else if (classs == "Wrong object") {
+          DialogHelper.showErroDialog(description: "Skin not found");
         }
       });
       hideLoading();
     } else {
       hideLoading();
-      DialogHelper.showErroDialog();
+      DialogHelper.showErroDialog(description: "Skin not found");
     }
   }
 }
 
-Widget Found(BuildContext context, confidence) {
+Widget Found(BuildContext context, confidence, classs) {
   return AlertDialog(
-    title: PrimaryText(text: "Alert"),
+    title: PrimaryText(text: "Alert $classs"),
     content: PrimaryText(
-        text: "Unfortunately nvus found with $confidence%", size: 18),
+        text: "Unfortunately $classs found with $confidence%", size: 18),
     actionsAlignment: MainAxisAlignment.start,
     actionsPadding: EdgeInsets.only(right: 40),
     actions: [

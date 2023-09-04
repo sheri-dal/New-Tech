@@ -25,7 +25,7 @@ app.add_middleware(
 
 
 MODEL =  tf.keras.models.load_model("../Train_Model/2")
-CLASS_NAMES = ["nevus", "not found"]
+CLASS_NAMES = ["Nevus Stage 1", "Nevus Stage 1","Nevus Stage 1","Skin","Wrong object"]
 
 @app.get("/ping")
 async def ping():
@@ -46,7 +46,7 @@ def read_file_as_image(data) -> np.ndarray:
 async def predict(
     file: UploadFile = File(...)
 ):
-    MODEL =  tf.keras.models.load_model("../Train_Model/2")
+    MODEL =  tf.keras.models.load_model("../Train_Model/8")
     image = read_file_as_image(await file.read())
     
     img_batch = np.expand_dims(image, 0)
@@ -60,9 +60,5 @@ async def predict(
         'confidence': float(confidence )
     }
 
-    
-
-    
-
 if __name__ == "__main__":
-    uvicorn.run(app, host='192.168.0.101', port=8080)
+    uvicorn.run(app, host='192.168.100.20', port=8087)
